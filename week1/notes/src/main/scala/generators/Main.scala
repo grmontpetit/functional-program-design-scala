@@ -34,6 +34,35 @@ object Main extends App {
     x <- t
     y <- u
   } yield (x, y)
+
+  def single[T](x: T): Generator[T] = new Generator[T] {
+    def generate = x
+  }
+
+  def choose(lo: Int, hi: Int): Generator[Int] = {
+    for (x <- integers) yield lo + x % (hi - lo)
+  }
+
+  def oneOf[T](xs: T*): Generator[T] =
+    for (idx <- choose(0, xs.length)) yield xs(idx)
+
+  println(oneOf("red", "blue", "yellow").generate)
+
+  println(choose(0, 1000).generate)
+
+  println(single("hello").generate)
+
+  def lists: Generator[List[Int]] = for {
+    isEmpty <- booleans
+    list <- if (isEmpty) emptyLists else nonEmptyLists
+  } yield list
+
+  def emptyLists = single(Nil)
+
+  def nonEmptyLists = for {
+    head <- integers
+    tail <- lists
+  } yield head :: tail
 }
 
 trait Generator[+T] {
