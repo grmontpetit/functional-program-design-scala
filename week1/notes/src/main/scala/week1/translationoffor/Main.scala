@@ -1,4 +1,4 @@
-package translationoffor
+package week1.translationoffor
 
 object Main extends App {
 

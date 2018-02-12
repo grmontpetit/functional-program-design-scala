@@ -1,4 +1,4 @@
-package functiosandpatternmatching
+package week1.functiosandpatternmatching
 
 
 abstract class JSON

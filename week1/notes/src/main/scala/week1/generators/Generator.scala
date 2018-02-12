@@ -1,4 +1,4 @@
-package generators
+package week1.generators
 
 object Main extends App {
   val integers = new Generator[Int] {

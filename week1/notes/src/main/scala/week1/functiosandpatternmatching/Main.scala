@@ -1,4 +1,4 @@
-package functiosandpatternmatching
+package week1.functiosandpatternmatching
 
 object Main extends App {
   val data = JObj(Map(
