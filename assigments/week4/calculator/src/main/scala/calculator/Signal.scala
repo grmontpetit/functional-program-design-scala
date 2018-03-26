@@ -37,6 +37,7 @@ class Signal[T](expr: => T) {
     caller.value.observed ::= this
     myValue
   }
+
 }
 
 class Var[T](expr: => T) extends Signal[T](expr) {
